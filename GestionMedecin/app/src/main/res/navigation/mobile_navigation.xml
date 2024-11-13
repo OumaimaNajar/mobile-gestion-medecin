@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.esprit.gestionmedecin.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.esprit.gestionmedecin.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.esprit.gestionmedecin.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/historiqueFragment"
+        android:name="com.esprit.gestionmedecin.ui.fragments.HistoriqueFragment"
+        android:label="Historique des Médicaments"
+        tools:layout="@layout/fragment_historique" />
+
+    <fragment
+        android:id="@+id/nav_questions"
+        android:name="com.esprit.gestionmedecin.ui.fragments.ReclamationFragment"
+        android:label="Questions et Réclamations"
+        tools:layout="@layout/fragment_reclamations" />
+
+    <fragment
+        android:id="@+id/list_medecin"
+        android:name="com.esprit.gestionmedecin.ui.fragments.MedecinFragment"
+        android:label="Liste des Médecins"
+        tools:layout="@layout/fragment_medecin" />
+
+    <fragment
+        android:id="@+id/list_reclamation"
+        android:name="com.esprit.gestionmedecin.ui.fragments.MyReclamFragment"
+        android:label="Liste des Reclamations"
+        tools:layout="@layout/fragment_myreclam" />
+
+
+
+
+
+</navigation>

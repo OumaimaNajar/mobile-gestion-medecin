@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Couleur de fond bleu foncé -->
+    <solid android:color="#5C57E4" /> <!-- Bleu foncé -->
+
+    <!-- Coins arrondis uniquement en bas -->
+    <corners android:bottomLeftRadius="16dp"
+        android:bottomRightRadius="16dp" />
+</shape>

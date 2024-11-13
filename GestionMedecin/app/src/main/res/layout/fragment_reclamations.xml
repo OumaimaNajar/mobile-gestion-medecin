@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/home3"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <!-- Fond arrondi pour le titre -->
+    <TextView
+        android:id="@+id/tv_reclamation_title"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_margin="50dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:text="     Réclamation"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/et_reclamation"
+        tools:layout_editor_absoluteX="20dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <!-- Section des icônes en bas -->
+
+    <EditText
+        android:id="@+id/et_reclamation"
+        android:layout_width="291dp"
+        android:layout_height="262dp"
+        android:layout_marginTop="4dp"
+        android:background="#88FFFFFF"
+        android:hint="Décrivez votre réclamation ici"
+        android:inputType="textMultiLine"
+        android:minHeight="150dp"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#888888"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_reclamation_title" />
+
+
+    <Button
+        android:id="@+id/btn_submit_reclamation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#608BC1"
+        android:fontFamily="sans-serif-medium"
+        android:padding="12dp"
+        android:text="Soumettre"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_reclamation" />
+
+    <LinearLayout
+        android:layout_width="269dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/btn_submit_reclamation"
+        tools:layout_editor_absoluteX="95dp"
+        tools:ignore="MissingConstraints">
+
+        <!-- Icône Facebook -->
+        <ImageView
+            android:id="@+id/imageViewFacebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/fb" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" /> <!-- Espacement entre les icônes -->
+
+        <!-- Icône Twitter -->
+        <ImageView
+            android:id="@+id/imageViewTwitter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/twitter" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" /> <!-- Espacement entre les icônes -->
+
+        <!-- Icône Email -->
+        <ImageView
+            android:id="@+id/imageViewEmail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/instagram" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

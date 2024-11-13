@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/historiqueFragment"
+            android:title="Historique des Médicaments"
+            android:icon="@drawable/history"/>
+        <item
+            android:id="@+id/nav_questions"
+            android:title="Questions et Réclamations"
+            android:icon="@drawable/question"/>
+        <item
+            android:id="@+id/nav_rendez_vous"
+            android:icon="@drawable/rdv"
+            android:title="Rendez-vous" />
+        <item
+            android:id="@+id/list_medecin"
+            android:icon="@drawable/liste"
+            android:title="Liste des médecins" />
+        <item
+            android:id="@+id/list_reclamation"
+            android:icon="@drawable/liste"
+            android:title="Mes réclamations" />
+    </group>
+</menu>
