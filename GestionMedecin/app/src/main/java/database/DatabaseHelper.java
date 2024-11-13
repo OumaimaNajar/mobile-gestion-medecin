@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Ajout des médicaments initiaux
         if (getMedicamentsCount(db) == 0) {
-            addInitialMedicament(db, "Paracetamol", "2023-11-10", "500 mg", true);
+            addInitialMedicament(db, "Paracetamol", "2023-11-10", "500 mg", false);
             addInitialMedicament(db, "Ibuprofen", "2023-11-11", "200 mg", false);
             addInitialMedicament(db, "Aspirin", "2023-11-12", "100 mg", true);
         }
@@ -321,6 +321,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return medicamentList;
     }
+
+
+    public void updateMedicamentStatus(Medicament medicament) {
+        // Exemple de mise à jour dans la base de données
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("pris", medicament.isPris());  // Mise à jour du champ 'pris'
+
+        // Utilisez un identifiant unique (par exemple, nom ou un autre identifiant unique) pour trouver le médicament à mettre à jour
+        db.update("medicaments", contentValues, "nom = ?", new String[]{medicament.getNom()});
+    }
+
 
 
 

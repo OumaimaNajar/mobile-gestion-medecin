@@ -41,11 +41,31 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Me
         holder.nomTextView.setText(medicament.getNom());
         holder.datePriseTextView.setText(medicament.getDatePrise());
         holder.doseTextView.setText(medicament.getDose());
+
+        // Mettre à jour l'état de la CheckBox en fonction de l'état 'pris'
         holder.prisCheckBox.setChecked(medicament.isPris());
 
         // Définir le listener pour le bouton de suppression
         holder.btnRemove.setOnClickListener(v -> {
             deleteMedicament(medicament, position);
+        });
+
+
+        // Définir le listener pour le CheckBox "Pris"
+        holder.prisCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // Mettre à jour l'état de "pris" dans l'objet Medicament
+            medicament.setPris(isChecked);
+
+            // Optionnel : vous pouvez aussi mettre à jour la base de données ici
+            updateMedicamentInDatabase(medicament);
+
+            // Afficher un message de confirmation
+            String status = isChecked ? "Pris" : "Non pris";
+            Toast.makeText(context, medicament.getNom() + " a été marqué comme " + status, Toast.LENGTH_SHORT).show();
+
+            // Mise à jour de l'élément de la liste et notification de l'adaptateur
+            notifyItemChanged(position);  // Cela informe l'adaptateur qu'une modification a été effectuée à cette position
+
         });
     }
 
@@ -74,8 +94,9 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Me
 
     private void updateMedicamentInDatabase(Medicament medicament) {
         try {
+            // Exemple de mise à jour de la base de données (remplacez avec votre logique)
             // DatabaseHelper databaseHelper = new DatabaseHelper(context);
-            // databaseHelper.updateMedicament(medicament);  // Mise à jour dans la base de données
+            // databaseHelper.updateMedicament(medicament);  // Mettre à jour dans la base de données
 
             Toast.makeText(context, "Médicament mis à jour", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {

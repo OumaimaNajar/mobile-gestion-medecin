@@ -3,8 +3,12 @@ package com.esprit.gestionmedecin.ui.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,13 +53,48 @@ public class HistoriqueFragment extends Fragment {
             Log.e("HistoriqueFragment", "RecyclerView est null");
         }
 
+        // Ajout de l'écouteur pour le CheckBox
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                // Gérer les interactions, par exemple vérifier le clic sur le CheckBox
+                View view = rv.findChildViewUnder(e.getX(), e.getY());
+                if (view != null && rv.getChildAdapterPosition(view) != RecyclerView.NO_POSITION) {
+                    CheckBox prisCheckBox = view.findViewById(R.id.prisCheckBox);
+                    if (prisCheckBox != null) {
+                        boolean isChecked = prisCheckBox.isChecked();
+                        int position = rv.getChildAdapterPosition(view);
+                        Medicament medicament = medicamentList.get(position);
+
+                        // Mise à jour de l'état du médicament selon l'état du CheckBox
+                        updateMedicamentStatus(medicament, isChecked);
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {}
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
+        });
+
         return view;
     }
+    // Méthode pour mettre à jour l'état du médicament
+    private void updateMedicamentStatus(Medicament medicament, boolean isChecked) {
+        // Si isChecked est vrai, le médicament est pris (true), sinon il est non pris (false)
+        medicament.setPris(isChecked); // On passe directement le booléen
+        databaseHelper.updateMedicamentStatus(medicament); // Cette méthode doit être implémentée dans DatabaseHelper
+    }
 
-    public void updateMedicamentList(List<Medicament> newMedicamentList) {
+            public void updateMedicamentList(List<Medicament> newMedicamentList) {
         if (historiqueAdapter != null) {
             medicamentList = newMedicamentList;
-            historiqueAdapter.notifyDataSetChanged(); // Notifier l'adaptateur que la liste a été mise à jour
+            historiqueAdapter.notifyDataSetChanged(); // Notifie l'adaptateur pour rafraîchir la vue
         }
     }
+
+
 }
