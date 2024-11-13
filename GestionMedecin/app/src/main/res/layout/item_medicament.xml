@@ -1,151 +1,130 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="30dp"
-    android:background="@drawable/home4"
-    android:layout_marginBottom="20dp">
+    android:padding="33dp">
+
+    <!-- Zone de Statistiques -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/statisticsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#00ccff"
+        app:cardCornerRadius="35dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Total Médicaments -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/totalMedicaments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Total"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iconTotal"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/all" />
+            </LinearLayout>
+
+            <!-- Médicaments Restants -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/medicamentsRestants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Restants"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iconRestants"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/rest" />
+            </LinearLayout>
+
+            <!-- Médicaments Pris -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/medicamentsPris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Pris"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iconPris"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/done" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <!-- Liste Médicaments défilable -->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/historiqueLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="65dp">
+        android:gravity="center"
+        android:padding="1dp">
 
-        <!-- Titre de la Page -->
-        <TextView
-            android:id="@+id/tv_historique_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Historique des Médicaments"
-            android:textColor="#0080ff"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="1dp"
-            android:gravity="center"/>
-
-        <!-- Zone de Statistiques -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/statisticsLayout"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_marginTop="47dp"
-            app:cardCornerRadius="35dp"
-            app:cardBackgroundColor="#0000FF"
-            android:layout_marginRight="12dp"
-            android:layout_marginLeft="12dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp">
-
-                    <TextView
-                        android:id="@+id/totalMedicaments"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="Total"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
-                        android:gravity="center"
-                        android:padding="5dp" />
-
-                    <ImageView
-                        android:id="@+id/iconTotal"
-                        android:layout_width="50dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/all" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp">
-
-                    <TextView
-                        android:id="@+id/medicamentsRestants"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Restants"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
-                        android:gravity="center"
-                        android:padding="5dp" />
-
-                    <ImageView
-                        android:id="@+id/iconRestants"
-                        android:layout_width="50dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/rest"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp">
-
-                    <TextView
-                        android:id="@+id/medicamentsPris"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pris"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/white"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:padding="8dp" />
-
-                    <ImageView
-                        android:id="@+id/iconPris"
-                        android:layout_width="50dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/done" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Liste d'Historique des Médicaments -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewHistorique"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="16dp" />
-        <LinearLayout
-            android:id="@+id/historiqueLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="16dp">
-
-            <!-- Exemple d'un élément d'historique -->
-            <LinearLayout
+             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:padding="16dp"
                 android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:padding="16dp">
 
                 <!-- Colonne pour les textes du médicament -->
                 <LinearLayout
@@ -155,79 +134,77 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/medicament_name"
+                        android:id="@+id/nomTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black"/>
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/medicament_dose"
+                        android:id="@+id/doseTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/medicament_date"
+                        android:id="@+id/datePriseTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Date de Prise:"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/medicament_status"
+                    <CheckBox
+                        android:id="@+id/prisCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Statut:"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- Colonne pour les boutons -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="16dp">
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btnMarkAsTaken"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pris"
                         android:layout_marginBottom="8dp"
-                        android:backgroundTint="#6093ff"/>
+                        android:backgroundTint="#3cb371"
+                        android:text="Pris" />
 
                     <Button
                         android:id="@+id/btnRemove"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Supprimer"
-                        android:backgroundTint="#6093ff"/>
+                        android:backgroundTint="#b22222"
+                        android:text="Supprimer" />
                 </LinearLayout>
             </LinearLayout>
 
+
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_add_medication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ajouter Médicament"
-            android:backgroundTint="#1c2b4f"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center"
-            />
-
-    </LinearLayout>
+    </ScrollView>
+    <!-- Bouton Ajouter Médicament -->
+    <Button
+        android:id="@+id/btn_add_medicament"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:backgroundTint="#120a8f"
+        android:padding="5dp"
+        android:text="Ajouter"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 
 
 
 </LinearLayout>
-
-

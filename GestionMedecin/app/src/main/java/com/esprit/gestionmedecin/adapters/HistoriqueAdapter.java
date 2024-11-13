@@ -4,12 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 import com.esprit.gestionmedecin.R;
 import com.esprit.gestionmedecin.models.Medicament;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.MedicamentViewHolder> {
@@ -37,16 +41,31 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Me
         holder.nomTextView.setText(medicament.getNom());
         holder.datePriseTextView.setText(medicament.getDatePrise());
         holder.doseTextView.setText(medicament.getDose());
-
-        // Définir l'état du CheckBox selon le statut "pris" du médicament
         holder.prisCheckBox.setChecked(medicament.isPris());
 
-        // Gérer l'événement de changement de l'état du CheckBox
-        holder.prisCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            medicament.setPris(isChecked);
-            updateMedicamentInDatabase(medicament);
+        // Définir le listener pour le bouton de suppression
+        holder.btnRemove.setOnClickListener(v -> {
+            deleteMedicament(medicament, position);
         });
     }
+
+    private void deleteMedicament(Medicament medicament, int position) {
+        try {
+            // Suppression dans la base de données
+            // DatabaseHelper databaseHelper = new DatabaseHelper(context);
+            // databaseHelper.deleteMedicament(medicament);  // Suppression dans la base de données
+
+            // Suppression dans la liste et notification de RecyclerView
+            medicamentList.remove(position);
+            notifyItemRemoved(position);
+
+            Toast.makeText(context, "Médicament supprimé", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Erreur lors de la suppression du médicament", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     public int getItemCount() {
@@ -70,13 +89,19 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Me
         TextView datePriseTextView;
         TextView doseTextView;
         CheckBox prisCheckBox;
+        Button btnRemove;
 
-        public MedicamentViewHolder(View itemView) {
+
+        public MedicamentViewHolder(@NotNull View itemView) {
             super(itemView);
+
             nomTextView = itemView.findViewById(R.id.nomTextView);
             datePriseTextView = itemView.findViewById(R.id.datePriseTextView);
             doseTextView = itemView.findViewById(R.id.doseTextView);
             prisCheckBox = itemView.findViewById(R.id.prisCheckBox);
+            btnRemove = itemView.findViewById(R.id.btnRemove);
+
+
         }
     }
 }

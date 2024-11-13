@@ -212,6 +212,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return isDeleted;
     }
 
+    // méthode supprimer médicament
+    public boolean deleteMedicament(int id) {
+        boolean isDeleted = false;
+        SQLiteDatabase db = null;
+        try {
+            db = this.getWritableDatabase();
+
+            // Vérification de l'existence du médicament
+            Cursor cursor = db.query(TABLE_MEDICAMENTS, new String[]{"id"}, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                // ID trouvé, on peut procéder à la suppression
+                int rowsDeleted = db.delete(TABLE_MEDICAMENTS, "id = ?", new String[]{String.valueOf(id)});
+                isDeleted = rowsDeleted > 0;
+                Log.d("DatabaseHelper", "Medicament with ID " + id + (isDeleted ? " deleted successfully." : " failed to delete."));
+            } else {
+                Log.d("DatabaseHelper", "Medicament with ID " + id + " not found.");
+            }
+            cursor.close();
+        } catch (Exception e) {
+            Log.e("DatabaseHelper", "Error deleting medicament with ID: " + id, e);
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+        return isDeleted;
+    }
+
+
 
 
     // ajout historique
