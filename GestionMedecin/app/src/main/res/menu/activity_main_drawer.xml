@@ -5,6 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/ajout_medicament"
+            android:icon="@drawable/med"
+            android:title="Ajouter Médicaments" />
+        <item
             android:id="@+id/historiqueFragment"
             android:title="Historique des Médicaments"
             android:icon="@drawable/history"/>

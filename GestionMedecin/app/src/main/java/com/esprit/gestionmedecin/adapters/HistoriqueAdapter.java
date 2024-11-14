@@ -125,4 +125,14 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Me
 
         }
     }
+
+
+    // Méthode pour ajouter un médicament
+    public void addMedicament(Medicament medicament) {
+        medicamentList.add(medicament);
+        notifyItemInserted(medicamentList.size() - 1);  // Notifie que l'élément a été ajouté à la fin de la liste
+    }
+
+
+
 }

@@ -80,6 +80,9 @@ public class HistoriqueFragment extends Fragment {
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
         });
 
+
+
+
         return view;
     }
     // Méthode pour mettre à jour l'état du médicament

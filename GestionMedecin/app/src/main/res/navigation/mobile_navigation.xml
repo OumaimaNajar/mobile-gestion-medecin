@@ -48,6 +48,12 @@
         android:label="Liste des Reclamations"
         tools:layout="@layout/fragment_myreclam" />
 
+    <fragment
+        android:id="@+id/ajout_medicament"
+        android:name="com.esprit.gestionmedecin.ui.fragments.AjoutMedicamentFragment"
+        android:label="Ajout medicament"
+        tools:layout="@layout/fragment_ajoutmedicaments" />
+
 
 
 

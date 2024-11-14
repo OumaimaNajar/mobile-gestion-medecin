@@ -334,6 +334,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // Méthode pour ajouter un médicament avec 'pris' fixé à false (non pris) par défaut
+    public boolean addMedicament(String nom, String datePrise, String dose) {
+        SQLiteDatabase db = null;
+        try {
+            db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("nom", nom);
+            values.put("datePrise", datePrise);
+            values.put("dose", dose);
+            values.put("pris", 0); // Définit 'pris' à 0 (non pris) par défaut
+
+            long result = db.insert(TABLE_MEDICAMENTS, null, values);
+            if (result == -1) {
+                Log.e("DatabaseHelper", "Insertion of medicament failed.");
+                return false;
+            } else {
+                Log.d("DatabaseHelper", "Medicament inserted successfully with ID: " + result);
+                return true;
+            }
+        } catch (Exception e) {
+            Log.e("DatabaseHelper", "Error adding medicament", e);
+            return false;
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+
+
 
 
 
